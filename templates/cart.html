@@ -1,0 +1,39 @@
+{% include "header.html" %}
+<h1>Cart</h1>
+
+{% if session["cart"] is defined and session["cart"] %}
+  <form action="/updatecart" method="post">
+    <table style="width:50%" class="center">
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+        <th>Delete</th>
+      </tr>
+      {% for code, item in session["cart"].items() %}
+        <tr>
+          <td>{{ item["name"] }}</td>
+          <td> <input type="number" name="quantity_{{ code }}" value="{{ item["qty"] }}" min="1" /> </td>
+          <td>{{ item["subtotal"] }}</td>
+          <td><a class = "removetext" href="/removefromcart?code={{ code }}">Remove</a></td>
+        </tr>
+        <input type="hidden" name="code_{{ code }}" value="{{ code }}" />
+      {% endfor %}
+      <tr>
+        <td colspan="2"><b>Total</b></td>
+        <td><b>{{ session["cart"].values()|sum(attribute="subtotal") }}</b></td>
+        <td><a class = "removetext" href="/clearcart">Clear Cart</a></td>
+      </tr>
+      <tr>
+        <td colspan="4"><input type="submit" value="Update Cart"/> </td>
+      </tr>
+    </table>
+    
+    <a style = "font-size: 24;" href="checkout">Checkout</a>
+    
+  </form>
+{% else %}
+  <div>Your cart is empty</div>
+{% endif %}
+
+{% include "footer.html" %}

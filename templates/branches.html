@@ -1,0 +1,15 @@
+{% include "header.html" %}
+        <h1>Branches</h1>
+
+        <section>
+                <p class="description">Digital Cafe is a rising coffee empire with branches all across the Metro Manila, offering a diverse and rich coffee experience to patrons. Each branch boasts a unique ambiance, blending modern aesthetics with a warm, inviting atmosphere, creating the perfect backdrop for coffee enthusiasts to savor the finest blends sourced from exotic coffee beans worldwide. Digital Cafe has become synonymous with quality coffee, fostering a growing community of coffee lovers who appreciate the artistry of a perfectly brewed cup.</p>
+        </section>
+        
+        <h2 style="font-size: 30px; text-align: left;">Our Branches Nationwide!</h2>
+        <ul>
+                {% for branch in branches %}
+                <li style="font-size: 20px"><a href="branchdetails?code={{ branch["code"]}}">{{ branch['name'] }}</a></li>
+                {% endfor %}
+        </ul>
+
+{% include "footer.html" %}

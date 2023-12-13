@@ -1,0 +1,13 @@
+{% include "header.html" %}
+        <h1>Branch Details</h1>
+        <table style="width:35%" class="center">
+            <tr><td>Code</td><td>{{ code }}</td></tr>
+            <tr><td>Name</td><td>{{ branch["name"] }}</td></tr> 
+            <tr><td>Phone Number</td><td>{{ branch["phonenumber"] }}</td></tr>
+        </table>
+        <a href="/branches">
+            <button class="button button3" label="Back" name="back_button">Back</button>
+          </a>
+          
+
+{% include "footer.html" %}

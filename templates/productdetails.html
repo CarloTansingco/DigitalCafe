@@ -1,0 +1,17 @@
+{% include "header.html" %}
+    <h1>Product Details</h1>
+    <table style="width:35%" class="center">
+        <tr><td>Code</td><td>{{ code }}</td></tr>
+        <tr><td>Description</td><td>{{ product["name"]}}</td></tr>
+        <tr><td>Price</td><td>{{ product["price"]}}</td></tr>
+        {% if session["user"] is defined %}
+          <tr><td colspan=2><a href="/addtocart?code={{ code }}"><button  class="button button2" label="{{product["code"]}}" name="so_link">Add to Cart</button></a></td></tr>
+        {% endif %}
+    </table>
+
+        <a href="/products">
+            <button class="button3" label="Back" name="back_button">Back</button>
+        </a>
+   
+{% include "footer.html" %}
+
